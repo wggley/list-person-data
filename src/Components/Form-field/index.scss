@@ -1,0 +1,38 @@
+.Form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 340px;
+  font-size: 18px;
+  margin: 10px;
+
+  label {
+    color: #333333;
+    margin-bottom: 10px;
+  }
+
+  input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #efeeed;
+    color: #efeeed;
+    font-size: 18px;
+
+    &:focus {
+      color: #333333;
+    }
+
+    &.invalid {
+      color: #eb4a46;
+      border-bottom: 1px solid #eb4a46;
+    }
+  }
+
+  .error {
+    display: none;
+    &.on {
+      display: block;
+      color: #eb4a46;
+    }
+  }
+}

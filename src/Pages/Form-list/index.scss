@@ -1,0 +1,43 @@
+.Form-list {
+  font-size: 16px;
+  margin: 10px;
+}
+
+.List-title {
+  color: #867878;
+}
+
+.List-row {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.List-field {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 6px;
+
+  label {
+    color: #867878;
+  }
+
+  span {
+    color: #867878;
+  }
+}
+
+.Button-group {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .Form-list {
+    font-size: 18px;
+  }
+  .List-field {
+    gap: 120px;
+  }
+}

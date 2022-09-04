@@ -3,27 +3,54 @@ import './Components/Form-field/index.scss';
 import './Components/Form-button/index.scss';
 import { FormButton } from './Components/Form-button';
 import { FormField } from './Components/Form-field';
+import { useState } from 'react';
+import { FormList } from './Pages/Form-list';
+import IPerson from './Class/person';
+import React from 'react';
+import { FormRegister } from './Pages/Form-register';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <FormField
-          label={'Nome Completo (sem abreviações)'}
-        >
-        </FormField>
-        <FormField
-          label={'Nome Completo (sem abreviações)'}
-          invalid
-          errorMessage={'Campo deve conter 3 caracteres ou mais'}
-        >
-        </FormField>
-        <FormButton>Cadastrar</FormButton>
-        <FormButton disabled>Cadastrar</FormButton>
-        <FormButton loading>Cadastrar</FormButton>
-      </header>
-    </div>
-  );
+interface IGlobalContext {
+  currentUserData: IPerson,
+  setCurrentUserData: React.Dispatch<React.SetStateAction<IPerson>>,
+  setCurrentPageList: () => void
+  setCurrentPageRegister: () => void
 }
 
-export default App;
+export const GlobalContext = React.createContext<IGlobalContext>(
+  {} as IGlobalContext
+)
+
+export const App = () => {
+  const [currentPage, setCurrentPage] = useState<string>('list')
+  const [currentUserData, setCurrentUserData] = useState<IPerson>({} as IPerson)
+
+  const setCurrentPageList = () => {
+    setCurrentPage('list')
+  }
+
+  const setCurrentPageRegister = () => {
+    setCurrentPage('register')
+  }
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        currentUserData,
+        setCurrentUserData,
+        setCurrentPageList,
+        setCurrentPageRegister
+      }}
+    >
+      <div className="App">
+        {currentPage === 'list' && (
+          <FormList></FormList>
+        )}
+        {currentPage === 'register' && (
+          <FormRegister></FormRegister>
+        )}
+      </div>
+    </GlobalContext.Provider>
+  )
+}
+
+export default App

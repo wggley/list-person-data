@@ -1,26 +1,26 @@
 import './App.scss';
 import './Components/Form-field/index.scss';
 import './Components/Form-button/index.scss';
+import { FormButton } from './Components/Form-button';
+import { FormField } from './Components/Form-field';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="Form-field">
-          <label>Nome Completo (sem abreviações)</label>
-          <input type="text" className=""></input>
-          <span className="error">Campo deve conter 3 caracteres ou mais</span>
-        </div>
-        <div className="Form-field">
-          <label>Nome Completo (sem abreviações)</label>
-          <input type="text" className="invalid"></input>
-          <span className="error on">Campo deve conter 3 caracteres ou mais</span>
-        </div>
-        <button className="Form-button">Cadastrar</button>
-        <button className="Form-button" disabled>Cadastrar</button>
-        <button className="Form-button">
-          <div className="loading"></div>
-        </button>
+        <FormField
+          label={'Nome Completo (sem abreviações)'}
+        >
+        </FormField>
+        <FormField
+          label={'Nome Completo (sem abreviações)'}
+          invalid
+          errorMessage={'Campo deve conter 3 caracteres ou mais'}
+        >
+        </FormField>
+        <FormButton>Cadastrar</FormButton>
+        <FormButton disabled>Cadastrar</FormButton>
+        <FormButton loading>Cadastrar</FormButton>
       </header>
     </div>
   );
